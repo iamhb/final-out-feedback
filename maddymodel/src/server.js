@@ -279,9 +279,4 @@ console.log("in view section faculty");
                             res.status(200).json(docs);
                         }
         });
-
-
-
-
-
 });

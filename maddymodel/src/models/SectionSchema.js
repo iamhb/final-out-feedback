@@ -6,7 +6,7 @@ var SectionSchema = new Schema({
    sem:String,
    subname: String,
    subcode: String,
-  facultyname: String
+   facultyname: String
 });
 
 module.exports = mongoose.model('sectiondetails', SectionSchema);   

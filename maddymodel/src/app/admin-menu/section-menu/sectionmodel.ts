@@ -4,5 +4,4 @@ export class SectionModel{
 	subname:string
 	subcode:string
 	facultyname:string
-
 }

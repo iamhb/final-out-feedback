@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
         this.joinyear= this.username.substring(4,6);
         this.depcode= this.username.substring(6,9);
 
-        this.router.navigate(['/fdbkpage']);
+        this.router.navigate(['/fdbkpage'], { queryParams: {name: this.username} } );
+
+         //this.router.navigate(["/","chat",], { queryParams:data});
       }
     else
     {

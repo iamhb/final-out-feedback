@@ -96,14 +96,6 @@
  <br>
 
 
-
-
-
-
-
-
-
-
   <span *ngFor="let section of allSectionDetails">
    {{section.subname }}: {{section.subcode }} : {{section.facultyname}} <br>
 </span>
@@ -140,8 +132,9 @@
 
   <select [(ngModel)]= "facValue[i]" (click)="showFac( facValue[i] )">
 
-      <option  *ngFor="let faculty of allFaculty" > {{faculty.name}}
+      <option *ngFor="let faculty of allFaculty" > {{faculty.name}}
       </option>
+
 </select>
     <br>
 </span>

@@ -15,6 +15,7 @@ export class FacultyMenuComponent implements OnInit {
    addFacultyvar= false;
    viewFacultyvar= false;
    deleteFacultyvar= false;
+   
    allFaculty:FacultyModel[]=[];
    addFacultyname:string= '';
 

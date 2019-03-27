@@ -183,7 +183,6 @@ if(this.semValue){
    subscribe(
           data  => {
             console.log("section details done successfully ");
-            alert("Section Details Done");
           },
           error  => {
           console.log("Error", error);
