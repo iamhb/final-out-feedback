@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import{ HttpClient, HttpHeaders }from '@angular/common/http';
 import { SubjectModel } from '../subject-menu/subjectmodel';
 import { FacultyModel } from '../faculty-menu/facultymodel';
+import { SectionModel } from './sectionmodel';
 
 
 @Component({
@@ -13,12 +14,9 @@ export class SectionMenuComponent implements OnInit {
 depname: string= 'IT';
 semValue='';
 secValue='';
+facValue=[];
+index:number=1;
 collectionvar='';
-
-interpretation = {};
-
-
-facvalue='';
 
 
 addSectionvar:boolean;
@@ -28,10 +26,12 @@ setSectionvar:boolean;
 
 allSubjects:SubjectModel[]=[];
 allFaculty:FacultyModel[]=[];
+allSectionDetails:SectionModel[]=[];
+
 
 facultynamevar=[];
 
-index = ['0', '1', '2', '3', '4', '5'];
+/*index = ['0', '1', '2', '3', '4', '5'];*/
 
   constructor(private http:HttpClient) { }
 
@@ -53,6 +53,8 @@ this.http.
           error  => {
           console.log("Error", error);
         });
+        this.semValue='';
+this.secValue='';
 
   }
 
@@ -74,6 +76,7 @@ this.http.post("http://localhost:3000/api/create_section",{params: {depValue: th
           error  => {
           console.log("Error", error);
         });
+
 /*this.semValue='';
 this.secValue='';*/
   }
@@ -84,21 +87,43 @@ this.secValue='';*/
   		this.viewSectionvar= true;
    		this.deleteSectionvar= false;
         this.setSectionvar=false;
-
-   		alert("in view section");
-
-   		this.http.post("http://localhost:3000/api/view_section",{params: {depValue: this.depname }}).
-   subscribe(
-          data  => {
-            console.log("loaded successfully ");
-          },
-          error  => {
-          console.log("Error", error);
-        });
 /*this.semValue='';
 this.secValue='';*/
 
   }
+
+
+viewSectionFaculty(){
+
+if(this.semValue )
+{
+  if(this.secValue){
+      
+      this.http.post("http://localhost:3000/api/view_section_faulty",{params: {depValue: this.depname, secValue: this.secValue,
+
+        semValue: this.semValue }}).
+   subscribe(
+          data  => {
+            console.log("section details loaded successfully ");
+            console.log(data);
+            this.allSectionDetails=[];
+            for (var key in data) {
+                  console.log(data[key]);
+                  this.allSectionDetails.push(data[key]);
+                }
+               console.log(this.allSectionDetails[0]); 
+          },
+          error  => {
+          console.log("Error", error);
+        });
+ }
+}
+
+}
+
+
+
+
 
 
   setSection():void{
@@ -123,22 +148,51 @@ this.secValue='';*/
                   console.log(data[key]);
                   this.allSubjects.push(data[key]);
           }
-          console.log(this.allSubjects[0]);
+          console.log("subject details");
+          console.log(this.allSubjects);
           },
           error  => {
           console.log("Error", error);
         });
 }
   }
+//in this method, faculty names are pushed to array sequentially according to subjects orders
+    showFac(fac:string):void{
+      if(fac)
+      {
+          console.log("hello"+ fac);
+          this.facultynamevar.push(fac);
+      }
+  }
 
+//passing facultyname aaray var, sec var, sem var to api
   setSectiondb():void{
-
+if(this.semValue){
+  if(this.secValue){
     //alert(this.facultynamevar[2]);
+    console.log("semvalue:" +this.semValue + "sec value:" + this.secValue);
     console.log("in set secdb"+this.facultynamevar);
 
+    this.http.
+    post("http://localhost:3000/api/set_section_faculty",
+
+      {params: {depValue: this.depname, facultyname :this.facultynamevar, secValue: this.secValue,
+
+        semValue: this.semValue, subarray: this.allSubjects }}).
+
+   subscribe(
+          data  => {
+            console.log("section details done successfully ");
+            alert("Section Details Done");
+          },
+          error  => {
+          console.log("Error", error);
+        });
+}
+else alert(" Enter sec value");
+}
+else alert("Enter sem sec value");
   }
 
-  showFac(fac:string):void{
-    alert(fac);
-  }
+
 }

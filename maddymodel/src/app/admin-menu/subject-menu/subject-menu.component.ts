@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ HttpClient, HttpHeaders }from '@angular/common/http';
 import { SubjectModel } from './subjectmodel';
+
 @Component({
   selector: 'app-subject-menu',
   templateUrl: './subject-menu.component.html',
@@ -19,7 +20,8 @@ export class SubjectMenuComponent implements OnInit {
 
    semValue:string='';
    allSubjects:SubjectModel[]=[];
-   insertSubjects:SubjectModel;
+   insertSubjects:SubjectModel[]=[];
+
 
   constructor(private http:HttpClient) { }
 
@@ -45,9 +47,9 @@ addSubjectdb():void{
           error  => {
           console.log("Error", error);
         });
+   this.insertSubjects.subname='';
+   this.insertSubjects.subcode='';
 }
-
-
 
 
 viewSubject(): void{
@@ -58,12 +60,14 @@ viewSubject(): void{
 
 	getSubject(semValue):void{
 		if(this.semValue){
+
+      //this.allSubjects={};//to empty array to avoid adding details again to array
 		//alert(semValue);
 		this.http.
         post("http://localhost:3000/api/get_subjectname",{params: {name: semValue, depValue: this.depname }}).
         subscribe(
           data  => {
-          console.log("chats loaded successfully ");
+          console.log("subs loaded successfully ");
           console.log(data);
          this.allSubjects=[];
           for (var key in data) {

@@ -48,7 +48,6 @@
   <p *ngIf= deleteFacultyvar >
     delete faculty
 
-
     <select [(ngModel)]="delfacultynamevar">
   <option  *ngFor="let faculty of allFaculty" >{{faculty.name}} </option>
 </select>
@@ -62,13 +61,10 @@
 
   </p>
 
-  <p *ngIf= viewFacultyvar >
-    view faculty
-  </p>
+  <p align="center" *ngIf= viewFacultyvar >
 
-</div>
-<div align="center">
   <span *ngFor="let faculty of allFaculty">
     {{faculty.name}}  <br>
-</span>
-</div>
+  </span>
+
+  </p>

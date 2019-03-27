@@ -72,8 +72,43 @@
 
   </p>
 
-  <p *ngIf= viewSectionvar >
+  <p style="text-align:center" *ngIf= viewSectionvar >
     view Section
+
+<select [(ngModel)]= "semValue" class="form-group" (click)="viewSectionFaculty()" >
+
+    <option value="sem1">sem1</option>
+    <option value="sem2">sem2</option>
+    <option value="sem3">sem3</option>
+    <option value="sem4">sem4</option>
+    <option value="sem5">sem5</option>
+    <option value="sem6">sem6</option>
+    <option value="sem7">sem7</option>
+    <option value="sem8">sem8</option>
+ </select> 
+ <br>
+      Select section 
+ <select [(ngModel)]= "secValue" class="form-group" (click)="viewSectionFaculty()">
+    <option value="sec1">sec1</option>
+    <option value="sec2">sec2</option>
+    <option value="sec3">sec3</option>
+ </select>  
+ <br>
+
+
+
+
+
+
+
+
+
+
+  <span *ngFor="let section of allSectionDetails">
+   {{section.subname }}: {{section.subcode }} : {{section.facultyname}} <br>
+</span>
+
+
   </p>
 
  <p style="text-align:center" *ngIf= setSectionvar >
@@ -93,28 +128,30 @@
  <br>
       Select section 
   <select [(ngModel)]= "secValue" class="form-group" >
-    <option value="sem1">sec1</option>
-    <option value="sem2">sec2</option>
-    <option value="sem3">sec3</option>
+    <option value="sec1">sec1</option>
+    <option value="sec2">sec2</option>
+    <option value="sec3">sec3</option>
  </select> 
  <br>
 
-    <button
-          class="btn btn-primary" 
-          (click)="setSectiondb()>
-          Set Section Faculty
-      </button> <br>
+<!-- =====CAUTION: entha karanathai'kkondum keel ulla varigalil kai vaika vendaam===== -->
+  <span *ngFor="let subject of allSubjects ; let i = index " >
+{{subject.subname}}: {{subject.subcode}} : {{i}}
 
-  <span *ngFor="let subject of allSubjects" ng-repeat="item in allSubjects"  >
-{{subject.subname}}: {{subject.subcode}}
+  <select [(ngModel)]= "facValue[i]" (click)="showFac( facValue[i] )">
 
-  <select [(ngModel)]= "interpretation[$index+1]">
       <option  *ngFor="let faculty of allFaculty" > {{faculty.name}}
       </option>
 </select>
-{{interpretation[$index+1]}}
     <br>
 </span>
+<!-- ================================================================================== -->
+    <button
+          class="btn btn-primary" 
+          (click)="setSectiondb()">
+          Set Section Faculty
+      </button> <br>
+
 
   </p>
 
