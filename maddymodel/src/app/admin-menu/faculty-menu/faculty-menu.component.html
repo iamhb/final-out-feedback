@@ -1,0 +1,70 @@
+<div style="text-align:center" >
+  <h1><br>
+   {{depname}} Faculty Menu! 
+    <br>
+  </h1>
+    <h3>
+    In admin-menu-component/faculty-menu-component
+    </h3>
+  </div>
+
+  <div style="text-align:center">
+      <button
+          class="btn btn-primary" 
+          (click)="addFaculty()">
+          Add Faculty 
+      </button>
+
+      <button
+          class="btn btn-primary" 
+          (click)="viewFaculty()">
+           View Faculty 
+      </button>
+
+      <button
+          class="btn btn-primary" 
+          (click)="deleteFaculty()">
+           Delete Faculty 
+      </button>
+</div>
+
+  
+  <div style="text-align:center">
+
+  <p *ngIf= addFacultyvar >
+    Add faculty
+    Enter Faculty name for {{depname}} department:<br>
+    <input type="text" [(ngModel)]= "addFacultyname">
+
+    <button
+          class="btn btn-primary" 
+          (click)="addFacultydb (addFacultyname)">
+           add Faculty 
+      </button>
+
+ 
+  </p>
+
+  <p *ngIf= deleteFacultyvar >
+    delete faculty
+
+    <select [(ngModel)]="delfacultynamevar">
+  <option  *ngFor="let faculty of allFaculty" >{{faculty.name}} </option>
+</select>
+  
+  <button
+          class="btn btn-primary" 
+          (click)="deletefac()">
+           delete Faculty 
+      </button>
+
+
+  </p>
+
+  <p align="center" *ngIf= viewFacultyvar >
+
+  <span *ngFor="let faculty of allFaculty">
+    {{faculty.name}}  <br>
+  </span>
+
+  </p>

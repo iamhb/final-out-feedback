@@ -1,0 +1,50 @@
+<!-- 
+  In admin-menu-component
+  </h3>
+ <h3 style="text-align:center">
+       <a class="alert alert-info" routerLink="/admin-menu/subject" >
+              SubjectMenu
+        </a>
+      <a class="alert alert-info" routerLink="/admin-menu/faculty" >
+              FacultyMenu
+        </a><br>
+  -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="w3-bar w3-black">
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i>{{depname}} - Admin</a>
+
+ <div class="w3-dropdown-hover w3-mobile">
+      <button 
+      class="w3-button" (click)="toFacultyMenu()" >Faculty</button>
+      <div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+      </div>
+    </div>
+
+  <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-button" (click)= "toSubjectMenu()">Subject</button>
+      <div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+      </div>
+    </div>
+
+  <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-button" (click)= "toSectionMenu()">Section</button>
+      <div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+      </div>
+    </div>
+
+ <div class="w3-dropdown-hover w3-mobile">
+      <button class="w3-button" (click)= "toReportMenu()">Report</button>
+      <div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+      </div>
+    </div>
+
+<router-outlet></router-outlet>

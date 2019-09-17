@@ -1,0 +1,26 @@
+<div class="container" style="text-align:center;">
+    <table class="table table-bordered">
+          <tr>   
+            <th>Questions</th>
+            <th>STAFF NAME 1</th>
+            <th>STAFF NAME 2</th>
+            <th>STAFF NAME 3</th>
+            <th>STAFF NAME 4</th>
+          </tr>
+
+           <tr *ngFor = "let question of questions ; let i = index" >
+                        <td>{{ question }}</td>
+                        <td> 
+                          <form>
+                            <div class="md-radio">
+                    
+                            <input type="radio"  name=question [(ngModel)]="male[i]" value="a" > a--{{i}} 
+                            <input type="radio"  name=question [(ngModel)]="male[i]" value="b" > b--{{i}} 
+                            <input type="radio"  name=question [(ngModel)]="male[i]" value="c" > c--{{i}}
+                            <input type="radio"  name=question [(ngModel)]="male[i]" value="d" > d--{{i}} {{male[i]}}
+        
+                            </div>
+                          </form>
+                         </td>
+                     </tr>
+      </table>

@@ -1,0 +1,108 @@
+
+<div style="text-align:center"> 
+  <h1><br>
+   {{depname}}  Subject Menu! 
+  </h1>
+  <h3>
+  In admin-menu-component/subject-menu-component
+  </h3>
+</div>
+
+ <div style="text-align:center">
+      <button
+          class="btn btn-primary" 
+          (click)="addSubject()">
+          Add Subject 
+      </button>
+
+      <button
+          class="btn btn-primary" 
+          (click)="viewSubject()">
+           View Subject
+      </button>
+
+      <button
+          class="btn btn-primary" 
+          (click)="deleteSubject()">
+           Delete Subject
+      </button>
+</div>
+
+  <div style="text-align:center">
+
+  <p *ngIf= addSubjectvar>
+  Select sem
+
+  <select [(ngModel)]= "semValue" class="form-group" >
+    <option value="sem1">sem1</option>
+    <option value="sem2">sem2</option>
+    <option value="sem3">sem3</option>
+    <option value="sem4">sem4</option>
+    <option value="sem5">sem5</option>
+    <option value="sem6">sem6</option>
+    <option value="sem7">sem7</option>
+    <option value="sem8">sem8</option>
+ </select> 
+
+
+    Add Subject name
+  <input type="text" [(ngModel)]= "insertSubjects.subname"> <br>
+    Add Subject Code
+  <input type="text" [(ngModel)]= "insertSubjects.subcode">
+      <button
+          class="btn btn-primary" (click)="addSubjectdb()">
+           Add subject 
+      </button>
+
+
+  </p>
+
+  <p *ngIf= viewSubjectvar>
+    view Subject 
+     <select [(ngModel)]= "semValue" class="form-group" (click)="getSubject(semValue)">
+	  <option value="sem1">sem1</option>
+	  <option value="sem2">sem2</option>
+	  <option value="sem3">sem3</option>
+	  <option value="sem4">sem4</option>
+	  <option value="sem5">sem5</option>
+	  <option value="sem6">sem6</option>
+	  <option value="sem7">sem7</option>
+	  <option value="sem8">sem8</option>
+ </select> 
+    	<br>
+		Subject Details  {{semValue}}
+		<br>
+
+  </p>
+
+  <p *ngIf= deleteSubjectvar >
+   delete Subject 
+
+
+     <select [(ngModel)]= "semValue" class="form-group" (click)="getSubject(semValue)">
+	  <option value="sem1">sem1</option>
+	  <option value="sem2">sem2</option>
+	  <option value="sem3">sem3</option>
+	  <option value="sem4">sem4</option>
+	  <option value="sem5">sem5</option>
+	  <option value="sem6">sem6</option>
+	  <option value="sem7">sem7</option>
+	  <option value="sem8">sem8</option>
+ </select> 
+
+    	<br>
+		Subject Details  --{{semValue}}
+		<br>
+  </p>
+
+</div>
+
+<div align="center">
+  <span *ngFor="let subject of allSubjects">
+   {{subject.subname}}: {{subject.subcode}}  <br>
+</span>
+</div>
+
+
+
+
